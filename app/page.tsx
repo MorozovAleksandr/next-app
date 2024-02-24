@@ -1,6 +1,7 @@
+import React from "react";
 import Image from "next/image";
 
-export default function Home() {
+export default function Home(): React.JSX.Element {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
@@ -56,7 +57,6 @@ export default function Home() {
             Find in-depth information about Next.js features and API.
           </p>
         </a>
-
         <a
           href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
           className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"

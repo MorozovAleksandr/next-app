@@ -1,6 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
-import { Htag } from "@/components";
+import { Button, Htag } from "@/components";
 
 export const metadata: Metadata = {
   title: "page",
@@ -11,6 +11,8 @@ export default function Home(): React.JSX.Element {
   return (
     <div>
       <Htag tag="h1">HTAG</Htag>
+      <Button appearance={"primary"}>button</Button>
+      <Button appearance={"ghost"}>button</Button>
     </div>
   );
 }

@@ -1,7 +1,8 @@
 import React from "react";
 import type { Metadata } from "next";
-import { Button, Htag, P } from "@/components";
+import { Button, Htag, P, Tag } from "@/components";
 import { ArrowMode, ButtonMode } from "@/components/Button/types";
+import { TagColor } from "@/components/Tag/types";
 
 export const metadata: Metadata = {
   title: "page",
@@ -19,6 +20,9 @@ export default function Home(): React.JSX.Element {
       <P size={"s"}>S</P>
       <P>M</P>
       <P size={"l"}>L</P>
+      <Tag size={"m"} color={TagColor.primary} href={"https://google.com"}>
+        TEST
+      </Tag>
     </div>
   );
 }

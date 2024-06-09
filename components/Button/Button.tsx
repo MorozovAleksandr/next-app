@@ -3,10 +3,10 @@ import cn from "classnames";
 
 import styles from "./Button.module.css";
 import { ArrowMode, ButtonMode } from "@/components/Button/types";
-import { GeneralButtonProps } from "@/types/generalTypes";
+import { GeneralButtonType } from "@/types/generalTypes";
 import Image from "next/image";
 
-interface ButtonProps extends GeneralButtonProps {
+interface ButtonProps extends GeneralButtonType {
   children: ReactNode;
   appearance: ButtonMode;
   arrow?: ArrowMode;

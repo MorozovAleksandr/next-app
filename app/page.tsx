@@ -1,6 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
-import { Button, Htag } from "@/components";
+import { Button, Htag, P } from "@/components";
 import { ArrowMode, ButtonMode } from "@/components/Button/types";
 
 export const metadata: Metadata = {
@@ -16,6 +16,9 @@ export default function Home(): React.JSX.Element {
       <Button appearance={ButtonMode.primary} arrow={ArrowMode.down}>
         button
       </Button>
+      <P size={"s"}>S</P>
+      <P>M</P>
+      <P size={"l"}>L</P>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
-import { Button, Htag, P, Tag } from "@/components";
+import { Button, Htag, P, Rating, Tag } from "@/components";
 import { ArrowMode, ButtonMode } from "@/components/Button/types";
 import { TagColor } from "@/components/Tag/types";
 
@@ -23,6 +23,7 @@ export default function Home(): React.JSX.Element {
       <Tag size={"m"} color={TagColor.primary} href={"https://google.com"}>
         TEST
       </Tag>
+      <Rating rating={4} setRating={() => console.log("setRating")} />
     </div>
   );
 }

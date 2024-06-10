@@ -1,4 +1,9 @@
-import { ButtonHTMLAttributes, DetailedHTMLProps, HTMLAttributes } from "react";
+import {
+  ButtonHTMLAttributes,
+  DetailedHTMLProps,
+  HTMLAttributes,
+  SVGAttributes,
+} from "react";
 
 export type GeneralButtonType = DetailedHTMLProps<
   ButtonHTMLAttributes<HTMLButtonElement>,
@@ -13,4 +18,9 @@ export type GeneralPType = DetailedHTMLProps<
 export type GeneralDivType = DetailedHTMLProps<
   HTMLAttributes<HTMLDivElement>,
   HTMLDivElement
+>;
+
+export type GeneralSvgType = DetailedHTMLProps<
+  SVGAttributes<SVGSVGElement>,
+  SVGSVGElement
 >;

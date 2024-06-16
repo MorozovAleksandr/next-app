@@ -1,7 +1,9 @@
 import { API } from "@/api/api";
 import { IProductModel } from "@/types/product";
 
-export const getProducts = async (category: string): Promise<IProductModel> => {
+export const getProducts = async (
+  category: string,
+): Promise<IProductModel[]> => {
   const res = await fetch(API.getProductsURL(), {
     method: "POST",
     body: JSON.stringify({

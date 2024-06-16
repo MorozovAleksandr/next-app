@@ -1,11 +1,11 @@
 import React from "react";
-import { Htag } from "@/components";
 import { getPage } from "@/api/page";
 import { getProducts } from "@/api/products";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getMenu } from "@/api/menu";
 import { firstLevelMenu } from "@/helpers/helpers";
+import { TopPageComponent } from "@/app/components";
 
 export const metadata: Metadata = {
   title: "Products",
@@ -45,10 +45,13 @@ const AliasPage = async ({
 
   return (
     <div>
-      <Htag tag="h1">Страница {`${params.type}/${params.alias}`}</Htag>
-      <div>{JSON.stringify(page)}</div>
-      <div className={"m-5"}></div>
-      <div>{JSON.stringify(products)}</div>
+      <TopPageComponent
+        page={page}
+        products={products}
+        firstCategory={
+          firstLevelMenu.find((item) => item.route === params.type)?.id
+        }
+      />
     </div>
   );
 };

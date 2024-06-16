@@ -17,7 +17,6 @@ const Product: FC<IProductProps> = ({
   className,
   ...props
 }): React.JSX.Element => {
-  console.log(product.image);
   return (
     <Card
       className={classnames(className, "border-5 p-[30px]")}

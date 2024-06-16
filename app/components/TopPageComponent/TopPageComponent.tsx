@@ -13,11 +13,7 @@ interface ITopPageComponentProps {
   firstCategory: LevelCategory | undefined;
 }
 
-const TopPageComponent: FC<ITopPageComponentProps> = ({
-  page,
-  products,
-  firstCategory,
-}) => {
+const TopPageComponent: FC<ITopPageComponentProps> = ({ page, products }) => {
   return (
     <div className={"mt-[40px]"}>
       <div className={style.title}>

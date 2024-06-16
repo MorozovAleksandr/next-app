@@ -2,42 +2,12 @@
 import React, { useEffect, useState } from "react";
 import { getMenu } from "@/api/menu";
 import { IFirstLevelMenuItem, IMenuItem, IPageItem } from "@/types/menu";
-import CoursesIcon from "@/components/svg/Courses/CoursesIcon";
 import { LevelCategory } from "@/types/page";
-import ProductsIcon from "@/components/svg/Products/ProductsIcon";
-import BooksIcon from "@/components/svg/Books/BooksIcon";
-import ServicesIcon from "@/components/svg/Services/ServicesIcon";
 import style from "./styles.module.css";
 import classnames from "classnames";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-const firstLevelMenu: IFirstLevelMenuItem[] = [
-  {
-    route: "courses",
-    name: "Курсы",
-    icon: <CoursesIcon />,
-    id: LevelCategory.Courses,
-  },
-  {
-    route: "services",
-    name: "Сервисы",
-    icon: <ServicesIcon />,
-    id: LevelCategory.Services,
-  },
-  {
-    route: "books",
-    name: "Книги",
-    icon: <BooksIcon />,
-    id: LevelCategory.Books,
-  },
-  {
-    route: "products",
-    name: "Товары",
-    icon: <ProductsIcon />,
-    id: LevelCategory.Products,
-  },
-];
+import { firstLevelMenu } from "@/helpers/helpers";
 
 const Menu = ({
   firstCategory = 3,
@@ -46,12 +16,23 @@ const Menu = ({
 }): React.JSX.Element => {
   const [menu, setMenu] = useState<IMenuItem[]>([]);
   const pathname = usePathname();
+  const [activeCategory, setActiveCategory] = useState<number>(firstCategory);
 
   useEffect(() => {
     (async () => {
-      setMenu(await getMenu(0));
+      setMenu(await getMenu(activeCategory));
     })();
-  }, []);
+  }, [activeCategory]);
+
+  useEffect(() => {
+    const currentCategory = firstLevelMenu.find(
+      (item) => item.route === pathname.split("/")[1],
+    );
+
+    if (currentCategory) {
+      setActiveCategory(currentCategory.id);
+    }
+  }, [pathname]);
 
   const openSecondLevel = (secondCategory: string) => {
     setMenu(
@@ -66,7 +47,6 @@ const Menu = ({
     );
   };
 
-  // const [activeCategory, setActiveCategory] = useState<number>(LevelCategory.Courses);
   const buildFirstLevel = () => (
     <>
       {firstLevelMenu.map((m) => (
@@ -74,14 +54,14 @@ const Menu = ({
           <Link href={`/${m.route}`}>
             <div
               className={classnames(style.firstLevel, {
-                [style.firstLevelActive]: m.id == firstCategory,
+                [style.firstLevelActive]: m.id == activeCategory,
               })}
             >
               {m.icon}
               <span>{m.name}</span>
             </div>
           </Link>
-          {m.id == firstCategory && buildSecondLevel(m)}
+          {m.id == activeCategory && buildSecondLevel(m)}
         </div>
       ))}
     </>
